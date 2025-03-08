@@ -3,7 +3,7 @@ import face_recognition
 import numpy as np
 import os
 
-known_faces_folder = '/home/xactai/Pictures/Webcam/Known_Faces'
+known_faces_folder = 'path_to_known_faces_dataset'
 known_faces_images = [(os.path.basename(os.path.dirname(os.path.join(root, file))), os.path.join(root, file)) 
               for root, dirs, files in os.walk(known_faces_folder) 
               for file in files]
@@ -28,24 +28,6 @@ def load_known_faces(known_faces_folder):
             known_face_names.append(person_name)
         del person_name, image_of_person
 
-
-    # Example: add known faces manually
-    # You can replace this part with images of your choice
-    # image_of_person = face_recognition.load_image_file("/home/xactai/Pictures/Webcam/2024-11-26-120653.jpg")
-    # person_face_encoding = face_recognition.face_encodings(image_of_person)[0]
-    # known_face_encodings.append(person_face_encoding)
-    # known_face_names.append("Abdul")
-
-    # image_of_person2 = face_recognition.load_image_file("/home/xactai/Pictures/Webcam/2024-11-26-124847.jpg")
-    # person2_face_encoding = face_recognition.face_encodings(image_of_person2)[0]
-    # known_face_encodings.append(person2_face_encoding)
-    # known_face_names.append("Mayuri")
-
-    # image_of_person3 = face_recognition.load_image_file("/home/xactai/Pictures/Webcam/2024-11-26-124943.jpg")
-    # person3_face_encoding = face_recognition.face_encodings(image_of_person3)[0]
-    # known_face_encodings.append(person3_face_encoding)
-    # known_face_names.append("Mayank")
-
 # Load known faces
 load_known_faces(known_faces_folder)
 
@@ -59,9 +41,6 @@ while True:
     if not ret:
         print("Failed to grab frame.")
         break
-
-    # Convert the frame from BGR to RGB (for face recognition)
-    # rgb_frame = frame[:, :, ::-1]
 
     # Find all face locations and face encodings in the current frame
     face_locations = face_recognition.face_locations(frame)
