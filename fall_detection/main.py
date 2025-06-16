@@ -2,7 +2,7 @@ import cv2 as cv
 from ultralytics import YOLO
 model = YOLO('yolov8m', task='detect')
 
-cap = cv.VideoCapture('/home/nabi/Videos/fall.mp4')
+cap = cv.VideoCapture('./test_video/fall.mp4')
 
 while cap.isOpened():
     ret, frame = cap.read()
